@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",          // Wersja ECMAScript (Node.js obsługuje ES2020)
+    "module": "CommonJS",        // System modułów (Node.js używa CommonJS)
+    "strict": true,             // Tryb ścisły (opcjonalnie)
+    "esModuleInterop": true,    // Włącza wsparcie dla importów ES Modules
+    "skipLibCheck": true,       // Pomija sprawdzanie typów w bibliotekach zewnętrznych
+    "outDir": "./dist",         // Folder, gdzie będą generowane pliki JavaScript
+    "rootDir": "./src",         // Folder, gdzie znajdują się pliki źródłowe TypeScript
+    "moduleResolution": "node", // Rozwiązywanie modułów w stylu Node.js
+    "sourceMap": true,           // Generuje mapy źródłowe (przydatne do debugowania)
+    "allowImportingTsExtensions": true
+  },
+  "include": ["src/**/*"],      // Uwzględnia pliki TypeScript z folderu `src`
+  "exclude": ["node_modules"]   // Wyklucza folder `node_modules`
+}

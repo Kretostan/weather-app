@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Montserrat';
+    src: /* webpackIgnore: true */ url('/fonts/Montserrat-SemiBold.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: "Inter";
+    src: /* webpackIgnore: true */ url('/fonts/Inter-Regular.ttf') format("truetype");
+}
