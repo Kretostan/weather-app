@@ -4,5 +4,9 @@
 
 node_modules
 
+dist
+
 backend.env
 !backend.env.example
+
+.DS_Store
