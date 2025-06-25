@@ -11,7 +11,7 @@ const WeatherMenu = ({ location, setLocation, setTemperature }: WeatherMenuProps
     return <div className="flex flex-col justify-center gap-6">
         <div className="flex flex-col">
             <label className="px-1 text-sm">Location:</label>
-            // TODO: Zrobić walidacje. Jeśli jest puste bądź nie ma takiego miasta
+            {/* TODO: Zrobić walidacje. Jeśli jest puste bądź nie ma takiego miasta*/}
             <input
                 type="text"
                 placeholder="Enter location"

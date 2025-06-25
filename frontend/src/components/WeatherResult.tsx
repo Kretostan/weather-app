@@ -20,7 +20,7 @@ const WeatherResult = ({ weather, temperature, location, setWeather }: WeatherRe
                 console.error("Error: ", error);
             }
         })();
-    }, [location]);
+    }, [location, setWeather]);
 
     return <div className="flex flex-col gap-2 justify-center items-center h-[120px]">
         {weather ? <>
