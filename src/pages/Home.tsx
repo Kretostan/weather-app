@@ -15,7 +15,9 @@ function Home() {
     // TODO: Add routes and error page
     // TODO: Responsive design
     // TODO: Do components
+    // TODO: Add loading state
     // TODO: Ogarnąć błędy, które mogą się pojawić
+    // TODO: Weather based on current location
     const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
     const [temperature, setTemperature] = useState<"celsius" | "fahrenheit">("celsius");
     const [fetched, isFetched] = useState<boolean>(false);
@@ -36,7 +38,7 @@ function Home() {
     return <>
         <div className="flex items-center">
             <div className="hidden md:flex h-[90px]">
-                <img src="/src/assets/logo.png" alt="Sun behind cloud"  className="h-full logo-shadow" />
+                <img src="/logo.png" alt="Sun behind cloud"  className="h-full logo-shadow" />
             </div>
             <motion.h1
                 initial={{ opacity: 0 }}
