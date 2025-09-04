@@ -1,69 +1,97 @@
-# React + TypeScript + Vite
+# Weather App ☀️🌧️❄️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack weather application that provides real-time weather updates for any location.
+Users can easily switch between Celsius and Fahrenheit, while the app’s UI is clean, responsive, and animated.
+The backend is powered by Express.js and deployed with Firebase Functions.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔎 Search weather by city name
 
-## Expanding the ESLint configuration
+- 🌡️ Toggle between Celsius (°C) and Fahrenheit (°F)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 📱 Responsive design with Tailwind CSS
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- 🎨 Smooth UI animations with Framer Motion
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- ⚡ Fast performance thanks to Vite + TypeScript
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- ☁️ Backend with Express.js + Firebase Functions
+
+## 🛠️ Tech Stack
+### Frontend
+
+- React 19, React Router 7
+
+- Tailwind CSS 4
+
+- Framer Motion 12
+
+- Axios
+
+- Vite 7
+
+- TypeScript
+
+### Backend
+
+- Node.js + Express 5
+
+- Firebase Functions + Firebase Admin
+
+- Axios
+
+- dotenv
+
+- cors
+
+## ⚡ Installation & Setup
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/weather-app.git
+cd weather-app
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Install dependencies
+**Frontend**
+```bash
+cd client
+npm install
 ```
+
+**Backend**
+```bash
+cd server
+npm install
+```
+
+### 3. Configure environment variables
+**Frontend** (```client/.env```)
+```env
+VITE_API_KEY=your_weather_api_key
+VITE_BACKEND_URL=http://localhost:5000
+```
+
+**Backend** (```server/.env```)
+```env
+PORT=5000
+FIREBASE_PROJECT_ID=your_project_id
+FIREBASE_CLIENT_EMAIL=your_client_email
+FIREBASE_PRIVATE_KEY=your_private_key
+```
+
+### 4. Run the project
+**Frontend**
+```bash
+npm run dev
+```
+
+Available at: ```http://localhost:5173```
+
+**Backend**
+```bash
+npm run serve
+```
+
+(uses Firebase Functions local emulator)
