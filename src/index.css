@@ -4,16 +4,18 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: /* webpackIgnore: true */ url('/fonts/Montserrat-SemiBold.ttf') format("truetype");
+  src: /* webpackIgnore: true */ url('/fonts/Montserrat-SemiBold.woff2') format("woff2"), url('/fonts/Montserrat-SemiBold.woff') format("woff");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Inter";
-  src: /* webpackIgnore: true */ url('/fonts/Inter-Regular.ttf') format("truetype");
+  src: /* webpackIgnore: true */ url('/fonts/Inter-Regular.woff2') format("woff2"), url('/fonts/Inter-Regular.woff') format("woff");
+  font-display: swap;
 }
 
 body {
-  background-image: url("/src/assets/background.webp");
+  background-color: #9ec2e6;
 }
 
 .shadow-main {
