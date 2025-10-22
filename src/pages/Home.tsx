@@ -38,7 +38,7 @@ function Home() {
     return <>
         <div className="flex items-center">
             <div className="hidden md:flex h-[90px]">
-                <img src="/logo.png" alt="Sun behind cloud"  className="h-full logo-shadow" />
+                <img src="/logo.webp" alt="Sun behind cloud"  className="h-full logo-shadow" />
             </div>
             <motion.h1
                 initial={{ opacity: 0 }}
