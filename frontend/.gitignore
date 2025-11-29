@@ -1,0 +1,32 @@
+# Node.js
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.npm/
+.yarn/
+.pnpm/
+
+# Vite
+dist/
+.vite/
+
+# TypeScript
+*.tsbuildinfo
+*.log
+
+# Systemowe
+.DS_Store
+Thumbs.db
+../.idea/
+.vscode/
+
+# Docker
+docker-compose.override.yml
+.docker/
+.env
+
+# Inne tymczasowe
+.cache/
+coverage/
+temp/

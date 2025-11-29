@@ -1,32 +1,43 @@
-# Node.js
+gitignore uniwersalny
+
+# Node
 node_modules/
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-.npm/
-.yarn/
-.pnpm/
+npm-debug.log
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Buildy
+dist/
+build/
+coverage/
+
+# Environment
+.env
+.env.local
+.env.development
+.env.production
+.env.test
 
 # Vite
-dist/
-.vite/
+*.local
 
-# TypeScript
-*.tsbuildinfo
+# Logs
+logs
 *.log
+*.pid
+*.seed
+*.pid.lock
 
-# Systemowe
-.DS_Store
-Thumbs.db
-.idea/
+# Editor
 .vscode/
+.idea/
+.DS_Store
 
 # Docker
+docker-data/
+docker-volume/
 docker-compose.override.yml
-.docker/
-.env
 
-# Inne tymczasowe
-.cache/
-coverage/
-temp/
+# Runtime generated
+*.tsbuildinfo
