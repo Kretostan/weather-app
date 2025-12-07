@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 
-import Scene from "./space/Scene.tsx";
+import Scene from "./Scene.tsx";
 
 const CAMERA_CONFIG = {
 	fov: 75,
