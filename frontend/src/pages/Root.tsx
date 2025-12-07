@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 import backgroundImage from "../assets/background.webp";
-import { Space } from "../components/Space.tsx";
+import { Space } from "../components/Space/Space.tsx";
 
 const RootLayout = () => {
 	window.addEventListener("load", () => {
