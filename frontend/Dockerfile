@@ -1,19 +1,20 @@
-FROM node:22 AS build
+FROM node:22 AS deps
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN corepack enable
-RUN yarn install
+RUN yarn install --frozen-lockfile
 
-COPY vite.config.ts tsconfig*.json index.html tailwind*.ts ./
-COPY src ./src
-COPY public ./public
+FROM deps AS dev
+WORKDIR /app
+COPY . .
+EXPOSE 5173
+CMD ["yarn", "dev", "--host", "0.0.0.0", "--port", "5173"]
 
-ARG VITE_API_URL
-ENV VITE_API_URL=${VITE_API_URL}
-
+FROM deps AS build
+WORKDIR /app
+COPY . .
 RUN yarn build
 
 FROM nginx:alpine AS prod
-
 COPY --from=build /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
