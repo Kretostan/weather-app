@@ -1,9 +1,8 @@
 node_modules
 dist
-.vite
-.cache
-coverage
+build
+coverrage
 *.log
-.env*
+.env.example
 
 .git

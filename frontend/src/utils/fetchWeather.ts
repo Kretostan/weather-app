@@ -1,11 +1,9 @@
 import axios from "axios";
+import type { WeatherFormData } from "@/components/Home/Content/Form.tsx";
 
-export const fetchWeather = async (location: string) => {
+export const fetchCurrentWeather = async (data: WeatherFormData) => {
 	try {
-		const response = await axios.post(
-			`${import.meta.env.VITE_API_URL}/weather`,
-			{ location },
-		);
+		const response = await axios.post("/api/weather/current", data);
 		return response.data;
 	} catch (error) {
 		console.error("Error:", error);

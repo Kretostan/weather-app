@@ -1,0 +1,33 @@
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    command: yarn dev
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    healthcheck:
+      test: ["CMD-SHELL", "exit 0"]
+      disable: true
+
+  frontend:
+    build:
+      context: ./frontend
+      target: dev
+    container_name: frontend
+    command: yarn dev --host 0.0.0.0 --port 5173
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
