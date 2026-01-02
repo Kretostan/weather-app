@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 interface PrimaryButtonProps {
 	children: ReactNode;
-	type?: string;
+	type?: "button" | "submit" | "reset" | undefined;
 	onClick?: () => void;
 	disabled?: boolean;
 	className?: string;

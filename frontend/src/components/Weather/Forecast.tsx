@@ -70,7 +70,7 @@ const Forecast = ({ forecast, temperatureUnit }: ForecastProps) => {
 									transition={{ duration: 0.8 }}
 									className="font-bold sm:text-lg"
 								>
-									{currentDay.avg[temperatureUnit]}
+									{Math.round(currentDay.avg[temperatureUnit])}
 									{currentDay.tempUnit}
 								</motion.p>
 								<motion.img
@@ -102,7 +102,6 @@ const Forecast = ({ forecast, temperatureUnit }: ForecastProps) => {
 									transition={{ layout: { type: "tween", duration: 0.3 } }}
 									className="flex flex-col gap-3 mx-2 my-3 px-2 overflow-hidden"
 								>
-									{/* TODO: Margines powoduje przeskok czy chowaniu listy */}
 									<motion.ul className="flex flex-col gap-3 h-full overflow-y-auto outline-none">
 										{day.hour.map((hour, i) => {
 											const values = {
@@ -147,11 +146,11 @@ const Forecast = ({ forecast, temperatureUnit }: ForecastProps) => {
 															className="text-center"
 														>
 															<p className="font-bold">
-																{values.temp[temperatureUnit]}
+																{Math.round(values.temp[temperatureUnit])}
 																{temperatureUnit === "celsius" ? "°C" : "F"}
 															</p>
 															<p className="text-xs">
-																({values.feels[temperatureUnit]}
+																({Math.round(values.feels[temperatureUnit])}
 																{temperatureUnit === "celsius" ? "°C" : "F"})
 															</p>
 														</motion.div>

@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router";
 import SecondaryButton from "@/components/UI/SecondaryButton.tsx";
+import Copy from "@/components/Weather/Copy.tsx";
+import Current from "@/components/Weather/Current.tsx";
 import CurrentCard from "@/components/Weather/CurrentCard.tsx";
 import Forecast from "@/components/Weather/Forecast.tsx";
 import { useForecast } from "@/hooks/useForecast.ts";
@@ -44,63 +46,32 @@ const Weather = () => {
 			</SecondaryButton>
 			<SecondaryButton
 				onClick={async () => {
-					await copyWeather(weather.city, weather.country);
 					if (!showMark) {
+						await copyWeather(weather.location.name, weather.location.country);
 						setShowMark(true);
 						setTimeout(() => setShowMark(false), 2000);
 					}
 				}}
 				className="absolute top-2 right-5 w-16"
 			>
-				{!showMark ? (
-					<motion.img
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						src="/copy.svg"
-						alt="Copy weather"
-						className="h-5 w-5"
-					/>
-				) : (
-					<motion.img
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						src="/check.svg"
-						alt="Copied weather"
-						className="h-5 w-5"
-					/>
-				)}
+				<Copy mark={showMark} />
 			</SecondaryButton>
 			<motion.div
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				transition={{ duration: 0.2 }}
 				className="flex flex-col sm:gap-2 justify-center items-center w-full"
-				key={weather?.city}
+				key={weather?.location.name}
 			>
 				<div className="flex flex-col items-center gap-6 mb-4 text-center">
-					<img
-						src={weather?.current.condition.icon}
-						alt={weather?.current.condition.weather}
+					<Current
+						temperature={temperature}
+						weather={weather.current}
+						location={{
+							name: weather.location.name,
+							country: weather.location.country,
+						}}
 					/>
-					<div className="flex flex-col gap-1">
-						<p className="text-text-primary text-2xl font-bold">
-							{weather?.city}
-						</p>
-						<p className="text-xs">{weather?.country}</p>
-					</div>
-					<div className="flex flex-col gap-2">
-						<motion.p
-							key={temperature}
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							transition={{ duration: 0.8 }}
-							className="text-text-primary text-5xl font-bold"
-						>
-							{weather.current[temperature === "celsius" ? "temp_c" : "temp_f"]}
-							{temperature === "celsius" ? "°C" : "F"}
-						</motion.p>
-						<p>{weather?.current.condition.weather}</p>
-					</div>
 					<SecondaryButton onClick={temperatureHandler} className="w-32">
 						Switch
 					</SecondaryButton>

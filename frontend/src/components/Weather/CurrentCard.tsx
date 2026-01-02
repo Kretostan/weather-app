@@ -51,7 +51,7 @@ const CurrentCard = ({ weather, temperature }: CurrentCardProps) => {
 					transition={{ duration: 0.8 }}
 					className="text-lg font-semibold"
 				>
-					{values.feels[temperature]}
+					{Math.round(values.feels[temperature])}
 					{temperature === "celsius" ? "°C" : "°F"}
 				</motion.span>
 			</p>

@@ -1,6 +1,8 @@
 export interface WeatherSuccessResponse {
-	city: string;
-	country: string;
+	location: {
+		name: string;
+		country: string;
+	};
 	current: WeatherCurrentData;
 	forecast: WeatherDayData[];
 }
