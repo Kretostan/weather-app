@@ -1,66 +1,185 @@
 @import "tailwindcss";
-
 @config "../tailwind.config.ts";
 
-@font-face {
-	font-family: "Montserrat";
-	/* webpackIgnore: true */ src:
-		url("/fonts/Montserrat-SemiBold.woff2") format("woff2"),
-		url("/fonts/Montserrat-SemiBold.woff") format("woff");
-	font-display: swap;
+@layer base {
+	:root {
+		/* Accent */
+		--primary: oklch(62% 0.17 255);
+		--primary-hover: oklch(68% 0.17 255);
+		--primary-strong: oklch(54% 0.17 255);
+		--primary-soft: oklch(72% 0.11 255);
+
+		/* Text */
+		--text-primary: rgba(255 255 255); /* nagłówki, kluczowe dane */
+		--text-secondary: rgba(255 255 255 / 0.72);
+		--text-tertiary: rgba(255 255 255 / 0.62); /* meta, opisy, kraj */
+		--text-disabled: rgba(255 255 255 / 0.42); /* opcjonalnie */
+		--text-accent: rgba(
+			120 188 255
+		); /* akcent w tekście (np. chance of rain) */
+		--text-tip: rgba(184 199 230); /* helper / tip */
+
+		/* Glow */
+		--glow-primary: rgba(79 163 255 / 0.35);
+		--glow-secondary: rgba(255 255 255 / 0.1);
+
+		/* Surface */
+		--surface-primary-from: rgba(18 28 52 / 0.72);
+		--surface-primary-to: rgba(10 14 28 / 0.58); /* elementy wewnętrzne */
+		--surface-secondary: rgba(255 255 255 / 0.1); /* karty, listy */
+		--surface-secondary-hover: rgba(255 255 255 / 0.14);
+		--surface-secondary-active: rgba(
+			255 255 255 / 0.18
+		); /* rzadko, np. dropdown */
+		--surface-tertiary: rgba(255 255 255 / 0.22);
+
+		/* Border */
+		--border-primary: rgba(255 255 255 / 0.12);
+		--border-hover: rgba(255 255 255 / 0.18);
+		--border-focus: rgba(132 195 255 / 0.55);
+
+		/* Error */
+		--error: oklch(58% 0.19 25);
+		--error-hover: oklch(64% 0.19 25);
+		--error-strong: oklch(50% 0.19 25);
+		--error-soft: oklch(72% 0.1 25);
+		--error-surface-from: rgba(60 18 24 / 0.75);
+		--error-surface-to: rgba(32 10 14 / 0.6);
+		--error-border: rgba(255 120 120 / 0.55);
+
+		/* Success */
+		--success: oklch(62% 0.14 150);
+		--success-hover: oklch(68% 0.14 150);
+		--success-strong: oklch(54% 0.14 150);
+		--success-soft: oklch(72% 0.08 150);
+	}
+
+	@font-face {
+		font-family: "Montserrat";
+		/* webpackIgnore: true */ src:
+			url("/fonts/Montserrat-SemiBold.woff2") format("woff2"),
+			url("/fonts/Montserrat-SemiBold.woff") format("woff");
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Inter";
+		/* webpackIgnore: true */ src:
+			url("/fonts/Inter-Regular.woff2") format("woff2"),
+			url("/fonts/Inter-Regular.woff") format("woff");
+		font-display: swap;
+	}
+
+	body {
+		color: var(--text-secondary);
+		background-color: #9ec2e6;
+		border-color: #1a2942;
+	}
+
+	input[type="checkbox"]:checked {
+		background-color: #51a2ff;
+		border-color: #51a2ff;
+	}
+
+	input[type="checkbox"]:checked::before {
+		position: absolute;
+		content: "✓";
+		top: 7%;
+		left: 4px;
+		color: #ffffff;
+	}
+
+	/* cały scrollbar */
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: 10px;
+	}
+
+	/* uchwyt */
+	::-webkit-scrollbar-thumb {
+		background: rgba(255, 255, 255, 0.4);
+		border-radius: 10px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: rgba(255, 255, 255, 0.6);
+	}
 }
 
-@font-face {
-	font-family: "Inter";
-	/* webpackIgnore: true */ src:
-		url("/fonts/Inter-Regular.woff2") format("woff2"),
-		url("/fonts/Inter-Regular.woff") format("woff");
-	font-display: swap;
+@theme {
+	/* Accent */
+	--color-primary: var(--primary);
+	--color-primary-hover: var(--primary-hover);
+	--color-primary-strong: var(--primary-strong);
+	--color-primary-soft: var(--primary-soft);
+
+	/* Text	*/
+	--color-text-primary: var(--text-primary);
+	--color-text-secondary: var(--text-secondary);
+	--color-text-tertiary: var(--text-tertiary);
+	--color-text-disabled: var(--text-disabled);
+	--color-text-accent: var(--text-accent);
+	--color-text-tip: var(--text-tip);
+
+	/* Glow */
+	--color-glow-primary: var(--glow-primary);
+	--color-glow-secondary: var(--glow-secondary);
+
+	/* Surface */
+	--color-surface-primary-from: var(--surface-primary-from);
+	--color-surface-primary-to: var(--surface-primary-to);
+	--color-surface-secondary: var(--surface-secondary);
+	--color-surface-secondary-hover: var(--surface-secondary-hover);
+	--color-surface-secondary-active: var(--surface-secondary-active);
+	--color-surface-tertiary: var(--surface-tertiary);
+
+	/* Border */
+	--color-border-primary: var(--border-primary);
+	--color-border-hover: var(--border-hover);
+	--color-border-focus: var(--border-focus);
+
+	/* Error */
+	--color-error: var(--error);
+	--color-error-hover: var(--error-hover);
+	--color-error-strong: var(--error-strong);
+	--color-error-soft: var(--error-soft);
+	--color-error-surface-from: var(--error-surface-from);
+	--color-error-surface-to: var(--error-surface-to);
+	--color-error-border: var(--error-border);
 }
 
-body {
-	background-color: #9ec2e6;
-}
+@layer utilities {
+	.shadow-main {
+		box-shadow:
+			inset 10px 10px 10px rgba(255, 255, 255, 0.25),
+			inset -10px -10px 10px rgba(255, 255, 255, 0.25);
+	}
 
-.shadow-main {
-	box-shadow:
-		inset 10px 10px 10px rgba(255, 255, 255, 0.25),
-		inset -10px -10px 10px rgba(255, 255, 255, 0.25);
-}
+	.h1-shadow {
+		display: inline-block;
+		background: transparent;
+		filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.4));
+	}
 
-.h1-shadow {
-	display: inline-block;
-	background: transparent;
-	filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.4));
-}
+	.h2-shadow {
+		display: inline-block;
+		background: transparent;
+		filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+	}
 
-.h2-shadow {
-	display: inline-block;
-	background: transparent;
-	filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
-}
+	.logo-shadow {
+		display: inline-block;
+		background: transparent;
+		filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+	}
 
-.logo-shadow {
-	display: inline-block;
-	background: transparent;
-	filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
-}
-
-.shadow-input {
-	box-shadow:
-		inset 1px 3px 8px rgba(0, 0, 0, 0.15),
-		inset -1px -3px 8px rgba(0, 0, 0, 0.15);
-}
-
-input[type="checkbox"]:checked {
-	background-color: #51a2ff;
-	border-color: #51a2ff;
-}
-
-input[type="checkbox"]:checked::before {
-	position: absolute;
-	content: "✓";
-	top: 7%;
-	left: 4px;
-	color: #ffffff;
+	.shadow-input {
+		box-shadow:
+			inset 1px 3px 8px rgba(0, 0, 0, 0.15),
+			inset -1px -3px 8px rgba(0, 0, 0, 0.15);
+	}
 }

@@ -1,3 +1,8 @@
+export interface WeatherRequest {
+	city: string;
+	country?: string;
+}
+
 export interface WeatherSuccessResponse {
 	city: string;
 	country: string;
@@ -5,7 +10,7 @@ export interface WeatherSuccessResponse {
 	forecast: WeatherDayData[];
 }
 
-export interface WeatherCurrentData {
+interface WeatherCurrentData {
 	temp_c: number;
 	temp_f: number;
 	condition: {
@@ -46,4 +51,8 @@ export interface WeatherHourData {
 	chance_of_rain: number;
 }
 
-export type Temperature = "celsius" | "fahrenheit";
+interface WeatherErrorResponse {
+	error: string;
+}
+
+export type WeatherResponse = WeatherSuccessResponse | WeatherErrorResponse;

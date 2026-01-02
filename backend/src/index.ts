@@ -1,38 +1,32 @@
 import cors from "cors";
 import express from "express";
-import { onRequest } from "firebase-functions/v2/https";
 import "dotenv/config";
 import weatherRoutes from "./routes/weather";
+
+const PORT = Number(process.env.PORT) || 3001;
 
 const app = express();
 
 const whitelist = [
-	process.env.APP_URL,
-	"http://localhost:8080",
+	String(process.env.APP_URL),
+	"http://localhost:80",
 	"http://localhost:5173",
 ];
 app.use(
 	cors({
 		origin: (origin, callback) => {
-			if (!origin || !whitelist.includes(origin)) {
-				callback(null, false);
-			} else {
-				callback(null, true);
-			}
+			if (!origin) return callback(null, true);
+			return callback(null, whitelist.includes(origin));
 		},
+		credentials: true,
 	}),
 );
 app.use(express.json());
 
-app.use("/weather", weatherRoutes);
+app.use(weatherRoutes);
 
 app.get("/health", (_req, res) => res.status(200).json({ status: "OK" }));
 
-// if (process.env.NODE_ENV !== "production") {
-const port = 3000;
-app.listen(port, "0.0.0.0", () => {
-	console.log(`Listening on port: ${port}`);
+app.listen(PORT, "0.0.0.0", () => {
+	console.log(`Listening on port: ${PORT}`);
 });
-// }
-
-// export const api = onRequest({ region: "europe-central2" }, app);

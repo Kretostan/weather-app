@@ -1,9 +1,9 @@
 import axios from "axios";
-import type { WeatherFormData } from "@/components/Home/Content/Form.tsx";
+import type { WeatherFormData } from "@/components/Home/Form.tsx";
 
-export const fetchCurrentWeather = async (data: WeatherFormData) => {
+export const fetchWeather = async (data: WeatherFormData) => {
 	try {
-		const response = await axios.post("/api/weather/current", data);
+		const response = await axios.post("/api/weather", data);
 		return response.data;
 	} catch (error) {
 		console.error("Error:", error);

@@ -1,5 +1,4 @@
-import type { ReactNode, Ref } from "react";
-import type { Temperature } from "@/types/weather.ts";
+import type { ReactNode } from "react";
 
 export interface FormFieldBaseProps {
 	children: ReactNode;
@@ -8,12 +7,6 @@ export interface FormFieldBaseProps {
 
 export interface FormInputProps extends FormFieldBaseProps {
 	type?: string;
+	required?: boolean;
+	onChange?: () => void;
 }
-
-export interface FormSelectProps extends FormFieldBaseProps {
-	ref: Ref<HTMLInputElement>;
-	value: Temperature;
-	onChange: (value: Temperature) => void;
-}
-
-export interface FormCheckboxProps extends FormFieldBaseProps {}
