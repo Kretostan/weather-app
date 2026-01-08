@@ -10,7 +10,7 @@ services:
       - WEATHER_API_KEY=${WEATHER_API_KEY:-"No key"}
       - APP_URL=http://localhost:80
     expose:
-      - "3000"
+      - "3005"
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://localhost:3005/health || exit 1"]
       interval: 5s
