@@ -6,15 +6,14 @@ import { defineConfig, loadEnv } from "vite";
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd());
-	const backendTarget = env.VITE_API_URL ?? "http://backend:3001";
-
+	const backendTarget = env.VITE_API_URL;
 	return {
 		plugins: [react(), tailwindcss()],
 		server: {
 			host: true,
 			port: 5173,
 			proxy: {
-				"/api": {
+				"/api/weather": {
 					target: backendTarget,
 					changeOrigin: true,
 					rewrite: (path) => path.replace(/^\/api\/weather/, ""),
