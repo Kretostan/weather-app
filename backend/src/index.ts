@@ -3,7 +3,7 @@ import express from "express";
 import "dotenv/config";
 import weatherRoutes from "./routes/weather";
 
-const PORT = Number(process.env.PORT);
+const PORT = Number(process.env.PORT) || 3001;
 
 const app = express();
 
